@@ -34,8 +34,7 @@ public class UserInterface {
             System.out.println("* Please select one of the following options:\n");
             System.out.println("~ (1) View All Vehicles");
             System.out.println("~ (2) Browse Vehicles By Filter");
-            System.out.println("~ (3) Add a Vehicle");
-            System.out.println("~ (4) Remove a Vehicle");
+            System.out.println("~ (3) Manage Vehicles");
             System.out.println("~ (99) Exit");
 
             mainMenuInput = scanner.next();
@@ -46,15 +45,11 @@ public class UserInterface {
                     break;
 
                 case "2":
-                    processSubMenu();
+                    processBrowseVehiclesByFilterRequest();
                     break;
 
                 case "3":
-                    processAddVehicleRequest();
-                    break;
-
-                case "4":
-                    processRemoveVehicleRequest();
+                    processManagingVehiclesRequest();
                     break;
 
                 case "99":
@@ -71,7 +66,7 @@ public class UserInterface {
         } while (!mainMenuInput.equals("99"));
     }
 
-    public static void processSubMenu(){
+    public static void processBrowseVehiclesByFilterRequest(){
         String subMenuInput;
 
         do{
@@ -123,6 +118,49 @@ public class UserInterface {
                     break;
             }
         } while (!subMenuInput.equals("0"));
+    }
+
+    public static void processManagingVehiclesRequest() {
+
+        String managingVehiclesInput;
+
+        do {
+            System.out.println("\n*****************************************************************************************************");
+            System.out.println("=======================================  Manage Vehicles  ===========================================\n");
+            System.out.println("* Please select one of the following options:\n");
+            System.out.println("~ (1) Add a Vehicle");
+            System.out.println("~ (2) Remove a Vehicle");
+            System.out.println("~ (3) Sell/Lease a Vehicle");
+            System.out.println("~ (0) Return to HOME menu");
+
+            managingVehiclesInput = scanner.next().trim();
+
+            switch (managingVehiclesInput) {
+                case "1":
+                    processAddVehicleRequest();
+                    break;
+
+                case "2":
+                    processRemoveVehicleRequest();
+                    break;
+
+                case "3":
+                    processSalesAndLeaseRequest();
+                    break;
+
+                case "0":
+                    System.out.println("*****************************************************************************************************");
+                    System.out.println("========================================  Welcome Back!  ============================================");
+                    break;
+
+                default:
+                    System.out.println("********************* Command not found *********************");
+                    System.out.println("                    -- Please try again --");
+                    break;
+            }
+
+        } while (!managingVehiclesInput.equals("0"));
+
     }
 
     private static void displayVehicles(ArrayList<Vehicle> vehicles) {
@@ -462,6 +500,10 @@ public class UserInterface {
         DealershipFileManager.saveDealership(dealership);
 
         System.out.println("\n         ************************ Vehicle successfully removed! ******************************");
+    }
+
+    public static void processSalesAndLeaseRequest() {
+
     }
 
 }
