@@ -9,7 +9,7 @@ public class Vehicle {
     private String vehicleType;
     private String color;
     private int odometer;
-    private double price;
+    protected double price;
 
     public Vehicle(int vin, int year, String make, String model, String vehicleType, String color, int odometer, double price) {
         this.vin = vin;

@@ -8,7 +8,7 @@ public class Dealership {
     private String address;
     private String phone;
 
-    ArrayList<Vehicle> inventory;
+    private ArrayList<Vehicle> inventory;
 
     public Dealership(String name, String address, String phone) {
         this.name = name;
@@ -53,7 +53,7 @@ public class Dealership {
 
     public ArrayList<Vehicle> getVehiclesByMakeModel(String make, String model) {
         ArrayList<Vehicle> vehiclesFilteredByMakeModel = new ArrayList<>();
-        for (Vehicle vehicle : inventory) {
+        for (Vehicle vehicle : this.inventory) {
             if (vehicle.getMake().equalsIgnoreCase(make) && vehicle.getModel().equalsIgnoreCase(model)) {
                 vehiclesFilteredByMakeModel.add(vehicle);
             }
@@ -63,7 +63,7 @@ public class Dealership {
 
     public ArrayList<Vehicle> getVehiclesByYear(int minYear, int maxYear){
         ArrayList<Vehicle> vehiclesFilteredByYear = new ArrayList<>();
-        for(Vehicle vehicle: inventory) {
+        for(Vehicle vehicle: this.inventory) {
             if(vehicle.getYear() >= minYear && vehicle.getYear() <= maxYear) {
                 vehiclesFilteredByYear.add(vehicle);
             }
@@ -73,7 +73,7 @@ public class Dealership {
 
     public ArrayList<Vehicle> getVehiclesByColor(String color) {
         ArrayList<Vehicle> vehiclesFilteredByColor = new ArrayList<>();
-        for (Vehicle vehicle : inventory) {
+        for (Vehicle vehicle : this.inventory) {
             if (vehicle.getColor().equalsIgnoreCase(color)) {
                 vehiclesFilteredByColor.add(vehicle);
             }
@@ -83,7 +83,7 @@ public class Dealership {
 
     public ArrayList<Vehicle> getVehiclesByMileage(int minMileage, int maxMileage){
         ArrayList<Vehicle> vehiclesFilteredByMileage = new ArrayList<>();
-        for(Vehicle vehicle: inventory) {
+        for(Vehicle vehicle: this.inventory) {
             if(vehicle.getOdometer() >= minMileage && vehicle.getOdometer() <= maxMileage) {
                 vehiclesFilteredByMileage.add(vehicle);
             }
@@ -93,7 +93,7 @@ public class Dealership {
 
     public ArrayList<Vehicle> getVehiclesByType(String vehicleType) {
         ArrayList<Vehicle> vehiclesFilteredByType = new ArrayList<>();
-        for (Vehicle vehicle : inventory) {
+        for (Vehicle vehicle : this.inventory) {
             if (vehicle.getVehicleType().equalsIgnoreCase(vehicleType)) {
                 vehiclesFilteredByType.add(vehicle);
             }
@@ -106,11 +106,11 @@ public class Dealership {
     }
 
     public void addVehicle(Vehicle vehicle) {
-        inventory.add(vehicle);
+        this.inventory.add(vehicle);
     }
 
     public void removeVehicle(Vehicle vehicle) {
-        inventory.remove(vehicle);
+        this.inventory.remove(vehicle);
     }
 
 }

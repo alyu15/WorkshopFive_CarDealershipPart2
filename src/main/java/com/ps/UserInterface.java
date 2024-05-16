@@ -9,9 +9,7 @@ public class UserInterface {
     private static Dealership dealership;
 
     private static void init(){
-
-        DealershipFileManager dealershipFileManager = new DealershipFileManager();
-        dealership = dealershipFileManager.getDealership();
+        dealership = DealershipFileManager.getDealership();
     }
 
     public static void display(){
@@ -221,7 +219,7 @@ public class UserInterface {
         String make;
         while (true) {
             make = scanner.next().trim();
-            if (make.matches(".*\\d.*") || make.isEmpty()) {
+            if (make.isEmpty()) {
                 System.out.println("* Please enter in a vehicle make.");
             } else {
                 break;
@@ -232,7 +230,7 @@ public class UserInterface {
         String model;
         while (true) {
             model = scanner.next().trim();
-            if (model.matches(".*\\d.*") || model.isEmpty()) {
+            if (model.isEmpty()) {
                 System.out.println("* Please enter in a vehicle model.");
             } else {
                 break;
@@ -392,7 +390,7 @@ public class UserInterface {
         String newVehicleMake;
         while (true) {
             newVehicleMake = scanner.next().trim();
-            if (newVehicleMake.matches(".*\\d.*") || newVehicleMake.isEmpty()) {
+            if (newVehicleMake.isEmpty()) {
                 System.out.println("* Please enter in a vehicle make.");
             } else {
                 break;
@@ -405,7 +403,7 @@ public class UserInterface {
         String newVehicleModel;
         while (true) {
             newVehicleModel = scanner.next().trim();
-            if (newVehicleModel.matches(".*\\d.*") || newVehicleModel.isEmpty()) {
+            if (newVehicleModel.isEmpty()) {
                 System.out.println("* Please enter in a vehicle model.");
             } else {
                 break;

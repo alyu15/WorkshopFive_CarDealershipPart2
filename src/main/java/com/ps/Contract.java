@@ -6,10 +6,10 @@ public abstract class Contract {
     private String customerName;
     private String customerEmail;
     private String vehicleSold;
-    private float totalPrice;
-    private float monthlyPayment;
+    private double totalPrice;
+    private double monthlyPayment;
 
-    public Contract(String dateOfContract, String customerName, String customerEmail, String vehicleSold, float totalPrice, float monthlyPayment) {
+    public Contract(String dateOfContract, String customerName, String customerEmail, String vehicleSold, double totalPrice, double monthlyPayment) {
         this.dateOfContract = dateOfContract;
         this.customerName = customerName;
         this.customerEmail = customerEmail;
@@ -18,9 +18,9 @@ public abstract class Contract {
         this.monthlyPayment = monthlyPayment;
     }
 
-    public abstract float getTotalPrice();
+    public abstract double getTotalPrice();
 
-    public abstract float getMonthlyPayment();
+    public abstract double getMonthlyPayment();
 
     public String getDateOfContract() {
         return dateOfContract;
@@ -54,4 +54,15 @@ public abstract class Contract {
         this.vehicleSold = vehicleSold;
     }
 
+    @Override
+    public String toString() {
+        return "Contract{" +
+                "dateOfContract='" + dateOfContract + '\'' +
+                ", customerName='" + customerName + '\'' +
+                ", customerEmail='" + customerEmail + '\'' +
+                ", vehicleSold='" + vehicleSold + '\'' +
+                ", totalPrice=" + totalPrice +
+                ", monthlyPayment=" + monthlyPayment +
+                '}';
+    }
 }

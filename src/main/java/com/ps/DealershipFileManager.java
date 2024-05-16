@@ -4,10 +4,10 @@ import java.io.*;
 
 public class DealershipFileManager {
 
-    public Dealership getDealership() {
+    public static Dealership getDealership() {
 
         try {
-            BufferedReader buffReader = new BufferedReader(new FileReader("inventory.txt"));
+            BufferedReader buffReader = new BufferedReader(new FileReader("DB_Dealership.csv"));
 
             String[] dealershipData = buffReader.readLine().split("\\|");
             String dealershipName = dealershipData[0];
@@ -37,14 +37,14 @@ public class DealershipFileManager {
         } catch (IOException e) {
             System.out.println("Error reading file!");
             e.printStackTrace();
-            throw new RuntimeException(e);
+            return null;
         }
     }
 
     public static void saveDealership(Dealership dealership) {
 
         try {
-            BufferedWriter buffWriter = new BufferedWriter(new FileWriter("inventory.txt"));
+            BufferedWriter buffWriter = new BufferedWriter(new FileWriter("DB_Dealership.csv"));
 
             String dealershipName = dealership.getName();
             String dealershipAddress = dealership.getAddress();
