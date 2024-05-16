@@ -32,6 +32,7 @@ public class DealershipFileManager {
 
                 dealership.addVehicle(vehicle);
             }
+            buffReader.close();
             return dealership;
 
         } catch (IOException e) {

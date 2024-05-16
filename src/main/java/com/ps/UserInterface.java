@@ -5,7 +5,7 @@ import java.util.Scanner;
 
 public class UserInterface {
 
-    static Scanner scanner = new Scanner(System.in);
+    private static Scanner scanner = new Scanner(System.in);
     private static Dealership dealership;
 
     private static void init(){
@@ -16,19 +16,19 @@ public class UserInterface {
 
         init();
 
-        System.out.println("\n********************** Welcome to the World Famous Car Dealership Application! **********************");
-        System.out.println("                                   --  How may we help you?  --");
-        System.out.println("*****************************************************************************************************");
+        System.out.println("\n************************** Welcome to the World Famous Car Dealership Application! **************************");
+        System.out.println("                                       --  How may we help you?  --");
+        System.out.println("*************************************************************************************************************");
 
         processMainMenu();
     }
 
-    public static void processMainMenu() {
+    private static void processMainMenu() {
 
         String mainMenuInput;
 
         do {
-            System.out.println("\n=====================================================================================================");
+            System.out.println("\n=============================================================================================================");
             System.out.println("* Please select one of the following options:\n");
             System.out.println("~ (1) View All Vehicles");
             System.out.println("~ (2) Browse Vehicles By Filter");
@@ -51,8 +51,8 @@ public class UserInterface {
                     break;
 
                 case "99":
-                    System.out.println("***************************************  Exiting program... ***************************************");
-                    System.out.println("                                     --  Have a nice day!  --");
+                    System.out.println("********************************************  Exiting program... ********************************************");
+                    System.out.println("                                          --  Have a nice day!  --");
                     break;
 
                 default:
@@ -64,12 +64,12 @@ public class UserInterface {
         } while (!mainMenuInput.equals("99"));
     }
 
-    public static void processBrowseVehiclesByFilterRequest(){
+    private static void processBrowseVehiclesByFilterRequest(){
         String subMenuInput;
 
         do{
-            System.out.println("\n*****************************************************************************************************");
-            System.out.println("=================================== Browse Vehicles By Filter =======================================\n");
+            System.out.println("\n*************************************************************************************************************");
+            System.out.println("======================================= Browse Vehicles By Filter ===========================================\n");
             System.out.println("* Please select one of the following options:\n");
             System.out.println("~ (1) View Vehicles by Price");
             System.out.println("~ (2) View Vehicles by Make/Model");
@@ -106,8 +106,8 @@ public class UserInterface {
                     processGetByVehicleTypeRequest();
                     break;
                 case "0":
-                    System.out.println("*****************************************************************************************************");
-                    System.out.println("========================================  Welcome Back!  ============================================");
+                    System.out.println("*************************************************************************************************************");
+                    System.out.println("============================================  Welcome Back!  ================================================");
                     break;
 
                 default:
@@ -118,13 +118,13 @@ public class UserInterface {
         } while (!subMenuInput.equals("0"));
     }
 
-    public static void processManagingVehiclesRequest() {
+    private static void processManagingVehiclesRequest() {
 
         String managingVehiclesInput;
 
         do {
-            System.out.println("\n*****************************************************************************************************");
-            System.out.println("=======================================  Manage Vehicles  ===========================================\n");
+            System.out.println("\n*************************************************************************************************************");
+            System.out.println("===========================================  Manage Vehicles  ===============================================\n");
             System.out.println("* Please select one of the following options:\n");
             System.out.println("~ (1) Add a Vehicle");
             System.out.println("~ (2) Remove a Vehicle");
@@ -147,8 +147,8 @@ public class UserInterface {
                     break;
 
                 case "0":
-                    System.out.println("*****************************************************************************************************");
-                    System.out.println("========================================  Welcome Back!  ============================================");
+                    System.out.println("*************************************************************************************************************");
+                    System.out.println("============================================  Welcome Back!  ================================================");
                     break;
 
                 default:
@@ -162,8 +162,11 @@ public class UserInterface {
     }
 
     private static void displayVehicles(ArrayList<Vehicle> vehicles) {
+
+        System.out.println("\n**********************************************  Vehicles  ***************************************************");
+
         for(Vehicle vehicle: vehicles) {
-            System.out.printf("~ VIN: %d    Year: %d    %-8s %-10s   %-6s   %-8s  Mileage: %d   $%.2f\n",
+            System.out.printf("~ VIN: %d    Year: %d    %-14s %-14s   %-6s   %-10s  Mileage: %d   $%.2f\n",
                     vehicle.getVin(),
                     vehicle.getYear(),
                     vehicle.getMake(),
@@ -175,13 +178,13 @@ public class UserInterface {
             );
         }
         if(vehicles.isEmpty()) {
-            System.out.println("\n       ******************************** No vehicle founds ********************************");
+            System.out.println("\n           ******************************** No vehicle founds ********************************");
         }
     }
 
-    public static void processGetByPriceRequest() {
+    private static void processGetByPriceRequest() {
 
-        System.out.println("\n===================================== View Vehicles By Price ========================================");
+        System.out.println("\n========================================= View Vehicles By Price ============================================");
         System.out.println("\n* Please enter in the minimum price of the vehicle you are searching for:");
         double minPrice;
         while(true) {
@@ -206,15 +209,13 @@ public class UserInterface {
             }
         }
 
-        System.out.println("\n******************************************  Vehicles  ***********************************************");
-
         ArrayList<Vehicle> vehiclesByPrice = dealership.getVehiclesByPrice(minPrice, maxPrice);
         displayVehicles(vehiclesByPrice);
     }
 
-    public static void processGetByMakeModelRequest() {
+    private static void processGetByMakeModelRequest() {
 
-        System.out.println("\n================================== View Vehicles By Make/Model ======================================");
+        System.out.println("\n====================================== View Vehicles By Make/Model ==========================================");
         System.out.println("\n* Please enter in the make of the vehicle you are searching for:");
         String make;
         while (true) {
@@ -237,16 +238,14 @@ public class UserInterface {
             }
         }
 
-        System.out.println("\n******************************************  Vehicles  ***********************************************");
-
         ArrayList<Vehicle> vehiclesByMakeModel = dealership.getVehiclesByMakeModel(make, model);
         displayVehicles(vehiclesByMakeModel);
 
     }
 
-    public static void processGetByYearRequest() {
+    private static void processGetByYearRequest() {
 
-        System.out.println("\n===================================== View Vehicles By Year =========================================");
+        System.out.println("\n========================================= View Vehicles By Year =============================================");
         System.out.println("\n* Please enter in the minimum year of the vehicle you are searching for:");
         int minYear;
         while(true) {
@@ -271,15 +270,13 @@ public class UserInterface {
             }
         }
 
-        System.out.println("\n******************************************  Vehicles  ***********************************************");
-
         ArrayList<Vehicle> vehiclesByYear = dealership.getVehiclesByYear(minYear, maxYear);
         displayVehicles(vehiclesByYear);
     }
 
-    public static void processGetByColorRequest() {
+    private static void processGetByColorRequest() {
 
-        System.out.println("\n==================================== View Vehicles By Color =========================================");
+        System.out.println("\n======================================== View Vehicles By Color =============================================");
         System.out.println("* Please enter in the color of the vehicle you are searching for:");
         String color;
         while (true) {
@@ -291,15 +288,13 @@ public class UserInterface {
             }
         }
 
-        System.out.println("\n******************************************  Vehicles  ***********************************************");
-
         ArrayList<Vehicle> vehiclesByColor = dealership.getVehiclesByColor(color);
         displayVehicles(vehiclesByColor);
     }
 
-    public static void processGetByMileageRequest() {
+    private static void processGetByMileageRequest() {
 
-        System.out.println("\n==================================== View Vehicles By Mileage =======================================");
+        System.out.println("\n======================================== View Vehicles By Mileage ===========================================");
         System.out.println("\n* Please enter in the minimum mileage of the vehicle you are searching for:");
         int minMileage;
         while(true) {
@@ -324,15 +319,13 @@ public class UserInterface {
             }
         }
 
-        System.out.println("\n******************************************  Vehicles  ***********************************************");
-
         ArrayList<Vehicle> vehiclesByMileage = dealership.getVehiclesByMileage(minMileage, maxMileage);
         displayVehicles(vehiclesByMileage);
     }
 
-    public static void processGetByVehicleTypeRequest() {
+    private static void processGetByVehicleTypeRequest() {
 
-        System.out.println("\n================================== View Vehicles By Vehicle Type ====================================");
+        System.out.println("\n====================================== View Vehicles By Vehicle Type ========================================");
         System.out.println("\n* Please enter in the type of vehicle you are searching for:");
         String vehicleType;
         while (true) {
@@ -344,23 +337,21 @@ public class UserInterface {
             }
         }
 
-        System.out.println("\n******************************************  Vehicles  ***********************************************");
-
         ArrayList<Vehicle> vehiclesByType = dealership.getVehiclesByType(vehicleType);
         displayVehicles(vehiclesByType);
     }
 
-    public static void processGetAllVehiclesRequest() {
+    private static void processGetAllVehiclesRequest() {
 
-        System.out.println("\n======================================= View All Vehicles ===========================================");
-        System.out.println("\n******************************************  Vehicles  ***********************************************");
+        System.out.println("\n=========================================== View All Vehicles ===============================================");
+        System.out.println("\n**********************************************  Vehicles  ***************************************************");
 
         displayVehicles(dealership.getAllVehicles());
     }
 
-    public static void processAddVehicleRequest() {
+    private static void processAddVehicleRequest() {
 
-        System.out.println("\n====================================== Add a Vehicle ======================================");
+        System.out.println("\n============================================== Add a Vehicle ==============================================");
 
         System.out.println("\n* Please enter in the VIN of the vehicle:");
         int newVehicleVin;
@@ -465,12 +456,14 @@ public class UserInterface {
         dealership.addVehicle(newVehicle);
 
         DealershipFileManager.saveDealership(dealership);
-        System.out.println("\n*************************** You have successfully added a new vehicle! ******************************");
+        System.out.println("\n    *************************** You have successfully added a new vehicle! ******************************");
     }
 
-    public static void processRemoveVehicleRequest() {
+    private static void processRemoveVehicleRequest() {
 
-        System.out.println("\n====================================== Remove a Vehicle ============================================");
+        displayVehicles(dealership.getAllVehicles());
+
+        System.out.println("\n========================================== Remove a Vehicle ================================================");
         System.out.println("* Please enter the VIN of the vehicle you would like to remove:");
         int removeVehicleVin;
         while (true) {
@@ -497,11 +490,26 @@ public class UserInterface {
         dealership.removeVehicle(vehicleToRemove);
         DealershipFileManager.saveDealership(dealership);
 
-        System.out.println("\n         ************************ Vehicle successfully removed! ******************************");
+        System.out.println("\n             ************************ Vehicle successfully removed! ******************************");
     }
 
-    public static void processSalesAndLeaseRequest() {
+    private static void processSalesAndLeaseRequest() {
+        // Ask for
+            // VIN
+        displayVehicles(dealership.getAllVehicles());
 
+        System.out.println("\n========================================== Sell/Lease a Vehicle ================================================");
+        System.out.println("* Please enter in the VIN of the vehicle you would like to sell/lease:");
+        int vehicleVin;
+        while (true) {
+            if (scanner.hasNextInt()) {
+                vehicleVin = scanner.nextInt();
+                break;
+            } else {
+                System.out.println("Please enter a number.");
+                scanner.next();
+            }
+        }
     }
 
 }
