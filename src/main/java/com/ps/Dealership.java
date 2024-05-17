@@ -113,4 +113,9 @@ public class Dealership {
         this.inventory.remove(vehicle);
     }
 
+    // create a method searching for vin for vehicle sold
+    public void findVehicleSold(){
+
+    }
+
 }

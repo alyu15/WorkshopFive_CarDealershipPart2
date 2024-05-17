@@ -2,11 +2,11 @@ package com.ps;
 
 public class LeaseContract extends Contract{
 
-    private float expectedEndingValue;
-    private float leaseFee;
+    private double expectedEndingValue;
+    private double leaseFee;
 
-    public LeaseContract(String dateOfContract, String customerName, String customerEmail, String vehicleSold,
-                         double totalPrice, double monthlyPayment, float expectedEndingValue, float leaseFee) {
+    public LeaseContract(String dateOfContract, String customerName, String customerEmail, int vehicleSold,
+                         double totalPrice, double monthlyPayment, double expectedEndingValue, double leaseFee) {
 
         super(dateOfContract, customerName, customerEmail, vehicleSold, totalPrice, monthlyPayment);
         this.expectedEndingValue = expectedEndingValue;
@@ -15,35 +15,23 @@ public class LeaseContract extends Contract{
 
     @Override
     public double getTotalPrice() {
-        return 0;
+        return getExpectedEndingValue() + getLeaseFee();
     }
 
     @Override
     public double getMonthlyPayment() {
-        return 0;
+        Vehicle vehicle = new Vehicle();
+        return (vehicle.getPrice() * 0.04) * 36;
     }
 
-    public float getExpectedEndingValue() {
-        return expectedEndingValue;
+    public double getExpectedEndingValue() {
+        Vehicle vehicle = new Vehicle();
+        return vehicle.getPrice() * 0.5;
     }
 
-    public void setExpectedEndingValue(float expectedEndingValue) {
-        this.expectedEndingValue = expectedEndingValue;
+    public double getLeaseFee() {
+        Vehicle vehicle = new Vehicle();
+        return vehicle.getPrice() * 0.07;
     }
 
-    public float getLeaseFee() {
-        return leaseFee;
-    }
-
-    public void setLeaseFee(float leaseFee) {
-        this.leaseFee = leaseFee;
-    }
-
-    @Override
-    public String toString() {
-        return "LeaseContract{" +
-                "expectedEndingValue=" + expectedEndingValue +
-                ", leaseFee=" + leaseFee +
-                '}';
-    }
 }

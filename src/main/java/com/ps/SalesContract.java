@@ -2,74 +2,54 @@ package com.ps;
 
 public class SalesContract extends Contract {
 
-    private float salesTaxAmount;
-    private int recordingFee;
-    private int processingFee;
+    private int recordingFee = 100;
     private boolean financeChoice;
 
-    public SalesContract(String dateOfContract, String customerName, String customerEmail, String vehicleSold, double totalPrice,
-                         double monthlyPayment, float salesTaxAmount, int recordingFee, int processingFee, boolean financeChoice) {
+    public SalesContract(String dateOfContract, String customerName, String customerEmail, int vehicleSold, double totalPrice,
+                         double monthlyPayment, boolean financeChoice) {
 
         super(dateOfContract, customerName, customerEmail, vehicleSold, totalPrice, monthlyPayment);
-        this.salesTaxAmount = salesTaxAmount;
-        this.recordingFee = recordingFee;
-        this.processingFee = processingFee;
         this.financeChoice = financeChoice;
     }
 
     @Override
     public double getTotalPrice() {
-        Vehicle vehicle = null;
-        double salesPrice = vehicle.getPrice() + getRecordingFee() + getProcessingFee() + getMonthlyPayment() + getSalesTaxAmount();
-        return salesPrice;
+        Vehicle vehicle = new Vehicle();
+        return vehicle.getPrice() + getRecordingFee() + getProcessingFee() + getMonthlyPayment() + getSalesTaxAmount();
     }
 
     @Override
     public double getMonthlyPayment() {
-        Vehicle vehicle = null;
+        Vehicle vehicle = new Vehicle();
         double loanAmount;
-        if(isFinanceChoice() == true) {
+        if(isFinanceChoice()) {
             if(vehicle.getPrice() > 10_000) {
-                loanAmount = 0.0425 * 48;
-                return loanAmount;
+                loanAmount = (vehicle.getPrice() * 0.0425) * 48;
             } else {
-                loanAmount = 0.0525 * 24;
-                return loanAmount;
+                loanAmount = (vehicle.getPrice() * 0.0525) * 24;
             }
+            return loanAmount;
         } else {
             return 0;
         }
     }
 
     public double getSalesTaxAmount() {
-        Vehicle vehicle = null;
-        double taxAmount = vehicle.getPrice() * 0.05f;
-        return taxAmount;
-    }
-
-    public void setSalesTaxAmount(float salesTaxAmount) {
-        this.salesTaxAmount = salesTaxAmount;
+        Vehicle vehicle = new Vehicle();
+        return vehicle.getPrice() * 0.05f;
     }
 
     public int getRecordingFee() {
-        return 100;
-    }
-
-    public void setRecordingFee(int recordingFee) {
-        this.recordingFee = recordingFee;
+        return recordingFee;
     }
 
     public int getProcessingFee() {
-        Vehicle vehicle = null;
+        Vehicle vehicle = new Vehicle();
         if(vehicle.getPrice() < 10_000) {
             return 295;
         } else {
             return 495;
         }
-    }
-
-    public void setProcessingFee(int processingFee) {
-        this.processingFee = processingFee;
     }
 
     public boolean isFinanceChoice() {
@@ -80,13 +60,4 @@ public class SalesContract extends Contract {
         this.financeChoice = financeChoice;
     }
 
-    @Override
-    public String toString() {
-        return "SalesContract{" +
-                "salesTaxAmount=" + salesTaxAmount +
-                ", recordingFee=" + recordingFee +
-                ", processingFee=" + processingFee +
-                ", financeChoice=" + financeChoice +
-                '}';
-    }
 }

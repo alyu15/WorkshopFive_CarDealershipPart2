@@ -495,10 +495,19 @@ public class UserInterface {
 
     private static void processSalesAndLeaseRequest() {
         // Ask for
-            // VIN
+            // Selling or leasing
+            // auto grab date but need to format date
+            // User info
+                // name
+                // email
+            // VIN of vehicle selling/leasing
+                // get rest of car info from vin input
         displayVehicles(dealership.getAllVehicles());
 
         System.out.println("\n========================================== Sell/Lease a Vehicle ================================================");
+        System.out.println("* Would you like to sell or lease a vehicle?");
+        String sellLeaseChoice = scanner.next().trim();
+
         System.out.println("* Please enter in the VIN of the vehicle you would like to sell/lease:");
         int vehicleVin;
         while (true) {
