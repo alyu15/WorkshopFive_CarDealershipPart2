@@ -5,10 +5,12 @@ public class SalesContract extends Contract {
     private int recordingFee = 100;
     private boolean financeChoice;
 
-    public SalesContract(String dateOfContract, String customerName, String customerEmail, int vehicleSold, double totalPrice,
-                         double monthlyPayment, boolean financeChoice) {
+    public SalesContract(){
+    }
 
-        super(dateOfContract, customerName, customerEmail, vehicleSold, totalPrice, monthlyPayment);
+    public SalesContract(String dateOfContract, String customerName, String customerEmail, Vehicle vehicleSold, boolean financeChoice) {
+
+        super(dateOfContract, customerName, customerEmail, vehicleSold);
         this.financeChoice = financeChoice;
     }
 
@@ -53,10 +55,15 @@ public class SalesContract extends Contract {
     }
 
     public boolean isFinanceChoice() {
-        return financeChoice;
+
+      return financeChoice;
     }
+//    public static String stringFinance(boolean isFinancing){
+//        return isFinancing ? "yes" : "no";
+//    }
 
     public void setFinanceChoice(boolean financeChoice) {
+
         this.financeChoice = financeChoice;
     }
 

@@ -113,9 +113,13 @@ public class Dealership {
         this.inventory.remove(vehicle);
     }
 
-    // create a method searching for vin for vehicle sold
-    public void findVehicleSold(){
-
+    public Vehicle getVehiclesByVin(int vehicleVin){
+        for(Vehicle vehicle: this.inventory) {
+            if(vehicle.getVin() == vehicleVin){
+                return vehicle;
+            }
+        }
+        return null;
     }
 
 }

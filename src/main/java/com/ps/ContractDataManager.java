@@ -6,7 +6,7 @@ import java.io.IOException;
 
 public class ContractDataManager {
 
-    public static void saveContract(Contract contract, Vehicle vehicle, SalesContract salesContract, LeaseContract leaseContract){
+    public void saveContract(Contract contract){
 
         try {
             BufferedWriter buffWriter = new BufferedWriter(new FileWriter("Contracts.csv",true));
@@ -14,6 +14,8 @@ public class ContractDataManager {
             if(contract instanceof SalesContract) {
             // SALE|date|Name|email|vin|year|make|model|type|color|mileage|price|
                 // sales tax price|recording fee|processing fee|total price|monthly payments y/n|monthly payment amount
+                Vehicle vehicle = contract.getVehicleSold();
+                SalesContract salesContract = new SalesContract();
 
                 String dateOfContract = contract.getDateOfContract();
                 String customerName = contract.getCustomerName();
@@ -32,20 +34,24 @@ public class ContractDataManager {
                 int processingFee = salesContract.getProcessingFee();
                 double totalPrice = salesContract.getTotalPrice();
                 boolean financing = salesContract.isFinanceChoice();
+                String financeChoice = financing ? "YES" : "NO";
                 double monthlyPayment = salesContract.getMonthlyPayment();
 
 
-                String soldVehicle = String.format("SALE|%s|%s|%s|%d|%d|%s|%s|%s|%s|%d|%.2f|%.2f|%d|%d|%.2f|%b|%.2f\n",
+                String soldVehicle = String.format("SALE|%s|%s|%s|%d|%d|%s|%s|%s|%s|%d|%.2f|%.2f|%d|%d|%.2f|%s|%.2f\n",
                         dateOfContract, customerName, customerEmail, vehicleVin, vehicleYear,
                         vehicleMake, vehicleModel, vehicleType, vehicleColor,
                         vehicleMileage, vehiclePrice,
-                        taxAmount, recordingFee, processingFee, totalPrice, financing, monthlyPayment
+                        taxAmount, recordingFee, processingFee, totalPrice, financeChoice, monthlyPayment
                 );
                 buffWriter.write(soldVehicle);
 
-            } else {
+            }
+            if(contract instanceof LeaseContract){
             // LEASE|date|Name|email|vin|year|make|model|type|color|mileage|price|
                 // ending value|lease fee|total price|monthly payment
+                Vehicle vehicle = contract.getVehicleSold();
+                LeaseContract leaseContract = new LeaseContract();
 
                 String dateOfContract = contract.getDateOfContract();
                 String customerName = contract.getCustomerName();
@@ -72,6 +78,7 @@ public class ContractDataManager {
                 );
                 buffWriter.write(leasedVehicle);
             }
+            buffWriter.close();
 
         } catch (IOException e) {
             e.printStackTrace();
