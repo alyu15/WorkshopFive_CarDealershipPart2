@@ -9,7 +9,7 @@ public class Vehicle {
     private String vehicleType;
     private String color;
     private int odometer;
-    protected double price;
+    private double price;
 
     public Vehicle(){
     }

@@ -496,14 +496,7 @@ public class UserInterface {
     }
 
     private static void processSalesAndLeaseRequest() {
-        // Ask for
-            // Selling or leasing
-            // auto grab date but need to format date
-            // User info
-                // name
-                // email
-            // VIN of vehicle selling/leasing
-                // get rest of car info from vin input
+
         displayVehicles(dealership.getAllVehicles());
         ContractDataManager contractDataManager = new ContractDataManager();
         LocalDate dateNow = LocalDate.now();
@@ -547,7 +540,7 @@ public class UserInterface {
                         break;
                     }
                 }
-
+                scanner.nextLine();
         System.out.println("* Please enter in the VIN of the vehicle you would like to sell/lease:");
             int vehicleVin;
                 while (true) {
@@ -562,7 +555,6 @@ public class UserInterface {
         Vehicle vehicleFound = dealership.getVehiclesByVin(vehicleVin);
 
         String sellLeaseChoice;
-        boolean menuRunning = true;
 
         while (true) {
             System.out.println("* Would you like to sell or lease a vehicle?");
@@ -580,7 +572,6 @@ public class UserInterface {
                 case "sell":
                     System.out.println("* Would the customer like to finance their vehicle?");
                     boolean isFinancing = false;
-//                    System.out.println(stringFinance(isFinancing));
                     boolean validInput = false;
 
                     do {
@@ -617,7 +608,6 @@ public class UserInterface {
             }
 
         }
-
 
     }
 

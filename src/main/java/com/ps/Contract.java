@@ -55,15 +55,4 @@ public abstract class Contract {
         this.vehicleSold = vehicleSold;
     }
 
-    @Override
-    public String toString() {
-        return "Contract{" +
-                "dateOfContract='" + dateOfContract + '\'' +
-                ", customerName='" + customerName + '\'' +
-                ", customerEmail='" + customerEmail + '\'' +
-                ", vehicleSold='" + vehicleSold + '\'' +
-                ", totalPrice=" + totalPrice +
-                ", monthlyPayment=" + monthlyPayment +
-                '}';
-    }
 }

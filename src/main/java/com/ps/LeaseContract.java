@@ -1,20 +1,15 @@
 package com.ps;
 
-import java.rmi.dgc.Lease;
-
 public class LeaseContract extends Contract{
 
     private double expectedEndingValue;
     private double leaseFee;
 
-    public LeaseContract(){
-    }
-
     public LeaseContract(String dateOfContract, String customerName, String customerEmail, Vehicle vehicleSold) {
 
         super(dateOfContract, customerName, customerEmail, vehicleSold);
-        this.expectedEndingValue = expectedEndingValue;
-        this.leaseFee = leaseFee;
+        this.expectedEndingValue = vehicleSold.getPrice() * 0.5;
+        this.leaseFee = vehicleSold.getPrice() * 0.07;
     }
 
     @Override
@@ -24,18 +19,22 @@ public class LeaseContract extends Contract{
 
     @Override
     public double getMonthlyPayment() {
-        Vehicle vehicle = new Vehicle();
-        return (vehicle.getPrice() * 0.04) * 36;
+        Vehicle vehicle = getVehicleSold();
+        double loanAmount = vehicle.getPrice();
+        double monthlyInterestRate = 0.04/12;
+        int loanTermInMonths = 36;
+        double exponent = Math.pow(1 + monthlyInterestRate, loanTermInMonths);
+        double paymentPerMonth = (loanAmount * monthlyInterestRate * exponent) / (exponent - 1);
+
+        return paymentPerMonth;
     }
 
     public double getExpectedEndingValue() {
-        Vehicle vehicle = new Vehicle();
-        return vehicle.getPrice() * 0.5;
+        return expectedEndingValue;
     }
 
     public double getLeaseFee() {
-        Vehicle vehicle = new Vehicle();
-        return vehicle.getPrice() * 0.07;
+        return leaseFee;
     }
 
 }
