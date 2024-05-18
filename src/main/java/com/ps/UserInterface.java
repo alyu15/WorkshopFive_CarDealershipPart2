@@ -588,25 +588,32 @@ public class UserInterface {
                                 break;
 
                             default:
-                                System.out.println("Invalid input.");
+                                System.out.println("********************* Command not found *********************");
+                                System.out.println("                    -- Please try again --");
                         }
 
                     } while (!validInput);
 
                     SalesContract salesContract = new SalesContract(formattedDate, fullName, emailAddress, vehicleFound, isFinancing);
                     contractDataManager.saveContract(salesContract);
+                    dealership.removeVehicle(vehicleFound);
+                    DealershipFileManager.saveDealership(dealership);
+                    System.out.println("\n    *************************** Sales Contract has successfully been saved! ******************************");
                     return;
 
                 case "lease":
                     LeaseContract leaseContract = new LeaseContract(formattedDate, fullName, emailAddress, vehicleFound);
                     contractDataManager.saveContract(leaseContract);
+                    dealership.removeVehicle(vehicleFound);
+                    DealershipFileManager.saveDealership(dealership);
+                    System.out.println("\n    *************************** Lease Contract has successfully been saved! ******************************");
 
                     return;
 
                 default:
-                    System.out.println("Invalid input");
+                    System.out.println("********************* Command not found *********************");
+                    System.out.println("                    -- Please try again --");
             }
-
         }
 
     }
