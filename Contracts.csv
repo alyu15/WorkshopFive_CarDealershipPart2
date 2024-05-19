@@ -1,2 +1,14 @@
-SALE|20210928|Dana Wyatt|dana@texas.com|10112|1993|Ford|Explorer|Suv|Red|525123|995.00|49.75|100.00|295.00|1439.75|NO|0.00
-LEASE|20210928|Zachary Westly|zach@texas.com|37846|2021|Chevrolet|Silverado|Truck|Black|2750|31995.00|15997.50|2239.65|18337.15|541.39SALE|20240518|Dana White|testing@test.com|12345|1990|Honda|Civic|Sedan|Red|10050|5000.00|250.00|100|295|5922.10|YES|277.10
+SALE|20180115|John Smith|john@realemail.com|23567|2014|Toyota|Camry|Sedan|Gray|45000|13000.00|650.00|150.00|500.00|14100.00|YES|200.00
+LEASE|20190528|Emily Johnson|emily@email.com|54321|2019|Ford|F-150|Truck|White|15000|35000.00|17500.00|2500.00|20000.00|700.00|NO|0.00
+SALE|20201210|Michael Davis|michael@email.com|87654|2016|Chevrolet|Malibu|Sedan|Black|65000|10000.00|500.00|200.00|700.00|11200.00|YES|150.00
+LEASE|20210605|Sarah Brown|sarah@email.com|98765|2021|Honda|CR-V|SUV|Silver|10000|28000.00|14000.00|2000.00|16000.00|560.00|NO|0.00
+SALE|20210928|Dana Wyatt|dana@email.com|10112|1993|Ford|Explorer|Suv|Red|525123|995.00|49.75|100.00|295.00|1439.75|NO|0.00
+LEASE|20210928|Zachary Westly|zach@realemail.com|37846|2021|Chevrolet|Silverado|Truck|Black|2750|31995.00|15997.50|2239.65|18337.15|541.39
+SALE|20220730|Chris Thompson|chris@email.com|34567|2018|Jeep|Wrangler|SUV|Green|30000|25000.00|1250.00|100.00|800.00|27250.00|YES|500.00
+LEASE|20230120|Jessica Wilson|jessica@email.com|45678|2023|Subaru|Outback|SUV|Blue|8000|32000.00|16000.00|2500.00|18500.00|650.00|NO|0.00
+SALE|20240218|Andrew Martinez|andrew@realemail.com|56789|2017|Ford|Escape|SUV|White|40000|18000.00|900.00|300.00|1000.00|20200.00|YES|300.00
+LEASE|20240225|Amanda Garcia|amanda@email.com|67890|2024|Toyota|Rav4|SUV|Black|6000|29000.00|14500.00|2000.00|16500.00|580.00|NO|0.00
+SALE|20240519|Harry Rivers|harry.rivers@email.com|40256|2004|Nissan|Altima|Sedan|Blue|156406|6750.00|337.50|100|295|7856.58|YES|374.08
+SALE|20240519|Abby Waters|abby.waters@realemail.com|12345|1990|Honda|Civic|Sedan|Red|10000|2000.00|100.00|100|295|2495.00|NO|0.00
+
+
