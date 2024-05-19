@@ -10,8 +10,6 @@ public class ContractDataManager {
             BufferedWriter buffWriter = new BufferedWriter(new FileWriter("Contracts.csv",true));
 
             if(contract instanceof SalesContract) {
-            // SALE|date|Name|email|vin|year|make|model|type|color|mileage|price|
-                // sales tax price|recording fee|processing fee|total price|monthly payments y/n|monthly payment amount
 
                 Vehicle vehicle = contract.getVehicleSold();
 
@@ -43,15 +41,8 @@ public class ContractDataManager {
                         taxAmount, recordingFee, processingFee, totalPrice, financeChoice, monthlyPayment
                 );
                 buffWriter.write(soldVehicle);
-                System.out.println("Sales tax:" + ((SalesContract) contract).getSalesTaxAmount());
-                System.out.println("Processing fee:" + ((SalesContract) contract).getProcessingFee());
-                System.out.println("Total Price: " + contract.getTotalPrice());
-                System.out.println("Monthly Payment: " + contract.getMonthlyPayment());
-
             }
             if(contract instanceof LeaseContract){
-            // LEASE|date|Name|email|vin|year|make|model|type|color|mileage|price|
-                // ending value|lease fee|total price|monthly payment
 
                 Vehicle vehicle = contract.getVehicleSold();
 
@@ -79,10 +70,6 @@ public class ContractDataManager {
                         expectedValue, leaseFee, totalPrice, monthlyPayment
                 );
                 buffWriter.write(leasedVehicle);
-                System.out.println("Expected Value: " + ((LeaseContract) contract).getExpectedEndingValue());
-                System.out.println("Lease Fee: " + ((LeaseContract) contract).getLeaseFee());
-                System.out.println("Total Price: " + contract.getTotalPrice());
-                System.out.println("Monthly Payment: " + contract.getMonthlyPayment());
             }
             buffWriter.close();
 
